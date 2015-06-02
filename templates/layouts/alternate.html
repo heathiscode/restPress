@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+-->     
+    </head>
+    <body>
+        
+        <div>
+            <h3>THIS PAGE:</h3>
+            {{#response}}
+                <div><a href="{{link}}">{{title}}</a></div>
+            {{/response}}
+            
+            <hr/>
+            <h3>Pagination:</h3>
+            {{#pages}}
+                <a href="{{link}}">{{page}}</a>
+            {{/pages}}
+            <hr/>
+            <h3>Other posts in category '{{related.category.name}}':</h3>
+            <hr/>
+            
+            {{#related.category.response}}
+                <div><a href="{{link}}">{{title}}</a></div>
+            {{/related.category.response}}
+        </div>
+        
+        <hr/>
+        
+        <h3>Fetching a category:</h3>
+        <fetch category_name="child-category-i" posts_per_page="2">
+            {{#response}}
+                <div><a href="{{link}}">{{title}}</a> : {{link}} </div>
+            {{/response}}
+            Fetched Category: {{query.category_name}}
+            <ul>
+            {{#pages}}
+                <li class='{{helper-class}}'><a href="/category/{{query.category_name}}/page/{{page}}">{{page}}</a></li>
+            {{/pages}}
+            </ul>
+        </fetch>
+        
+    </body>
+</html>

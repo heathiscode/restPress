@@ -1,0 +1,15 @@
+<fetch category_name="{{category_name}}" posts_per_page="1">
+    {{#response}}
+    {{category_name}}
+    <article>
+        <h3>{{title}}</h3>
+    </article>
+    <hr/>
+    {{/response}}
+    <p>{{#header}}{{x-wp-total}}{{/header}} posts: </p>
+    <ul>
+    {{#pages}}
+        <li class='{{helper-class}}'><a href="{{link}}">{{page}}</a></li>
+    {{/pages}}
+    </ul>
+</fetch>
